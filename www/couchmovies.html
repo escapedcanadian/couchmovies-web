@@ -290,7 +290,7 @@
         $("#fragmentsTable").html(fragmentsHTML);
       }
 
-      $.get( "http://" + window.location.hostname + ":8080/api/movie/getCover?movieName="+that.movies[movieId].title, function( data ) {
+      $.get( "http://movieservice:8080/api/movie/getCover?movieName="+that.movies[movieId].title, function( data ) {
             console.log(data.url);
             $("#movieCover").html("");
             $("#movieCover").css({
@@ -332,7 +332,7 @@
       filters += "::collection="+($("#collectionFacet").val()== null?"":$("#collectionFacet").val().join(","));
       filters += "::year="+($("#yearFacet").val()== null?"":$("#yearFacet").val().join(","));
 
-      $.get( "http://" + window.location.hostname + ":8080/api/movie/search?query="+query+"&filters="+filters+"&fuzzy="+fuzzy, function( data ) {
+      $.get( "http://movieservice:8080/api/movie/search?query="+query+"&filters="+filters+"&fuzzy="+fuzzy, function( data ) {
 
           var facets = data.facets;
 
@@ -581,7 +581,7 @@
       },
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       remote: {
-          url: "http://" + window.location.hostname + ":8080/api/movie/autocomplete?query=%searchValue",
+          url: "http://movieservice:8080/api/movie/autocomplete?query=%searchValue",
           prepare: function (query,settings) {
           // settings.dataType = "jsonp";
             settings.url = settings.url.replace('%searchValue', query)
