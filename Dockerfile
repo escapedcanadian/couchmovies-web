@@ -2,9 +2,8 @@
 FROM jfloff/alpine-python:latest
 MAINTAINER david.brown@couchbase.com
 
-RUN apt-get install -y git
-RUN git clone https://github.com/escapedcanadian/couchmovies-web /opt/couchmovies/web
-
+RUN mkdir -p /opt/couchmovies/web/www
+COPY www /opt/couchmovies/web/www
 WORKDIR /opt/couchmovies/web/www
 
 CMD python3 -m http.server 8000
