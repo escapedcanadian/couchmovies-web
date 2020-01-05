@@ -184,6 +184,11 @@
 }
 
 </style>
+<head>
+  <title>Couchmovies Full Text Seach</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+</head>
 
 <body style="background: #000">
   <div class="container-fluid">
@@ -191,7 +196,7 @@
   
   <div class="s006">
     <div class="col-md-4">
-      <img src="couchflix.png" />
+      <img src="couchmovies.png" />
     </div>
 
     <div class="col-md-1 offset-md-2 custom-control custom-checkbox">
@@ -498,8 +503,10 @@
       <div class="carousel-tile" class="imgLoading"><img height="375" widht="250"
           id="{{movie.id}}-poster"
           onclick="javascript:highlightBlock('{{movie.id}}')"
-          onerror="$('#{{movie.id}}-poster'.replace('::','\\:\\:')).attr('src', 'devfix-img-error.jpg');"
-         src="https://image.tmdb.org/t/p/w500{{movie.posterPath}}">
+         src="http://localhost:8000/posters/{{movie.posterPath}}"
+         alt="Poster image not available" 
+         onerror="this.src='https://image.tmdb.org/t/p/w500{{movie.posterPath}}';this.onerror=null;"
+         >
        </div>
       {{/content}}
   </script>
@@ -571,7 +578,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.js"></script> 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/typeahead.jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/bloodhound.min.js"></script>
-  <link rel="stylesheet" href="typeahead.css">
+  <<!-- <link rel="stylesheet" href="typeahead.css">-->
 
   <script>
   var channels = new Bloodhound({  
